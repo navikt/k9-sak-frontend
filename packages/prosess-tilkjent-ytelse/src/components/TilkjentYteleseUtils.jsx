@@ -10,8 +10,10 @@ export const createVisningsnavnForAndel = (andel, getKodeverknavn) => {
     return andel.aktivitetStatus ? getKodeverknavn(andel.aktivitetStatus) : '';
   }
   return andel.arbeidsforholdId
-    ? `${andel.arbeidsgiverNavn} (${andel.arbeidsgiverOrgnr})${getEndCharFromId(andel.eksternArbeidsforholdId)}`
-    : `${andel.arbeidsgiverNavn} (${andel.arbeidsgiverOrgnr})`;
+    ? `${andel.arbeidsgiver.navn} (${andel.arbeidsgiver.identifikatorGUI})${getEndCharFromId(
+        andel.eksternArbeidsforholdId,
+      )}`
+    : `${andel.arbeidsgiver.navn} (${andel.arbeidsgiver.identifikatorGUI})`;
 };
 
 export default createVisningsnavnForAndel;
