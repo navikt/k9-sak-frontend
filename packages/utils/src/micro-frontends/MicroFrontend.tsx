@@ -19,8 +19,6 @@ const createScriptTagElement = (src, id, integrity, onReady, onError) => {
   scriptElement.src = src;
   scriptElement.onload = onReady;
   scriptElement.onerror = onError;
-  scriptElement.integrity = integrity;
-  scriptElement.crossOrigin = 'anonymous';
   scriptElement.id = id;
   return scriptElement;
 };
@@ -30,8 +28,6 @@ const createLinkTagElement = (src, id, integrity) => {
   linkElement.rel = 'stylesheet';
   linkElement.href = src;
   linkElement.id = id;
-  linkElement.integrity = integrity;
-  linkElement.crossOrigin = 'anonymous';
   return linkElement;
 };
 
