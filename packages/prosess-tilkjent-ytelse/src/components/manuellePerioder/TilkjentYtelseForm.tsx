@@ -99,7 +99,7 @@ export const sjekkOverlappendePerioder = (index: number, nestePeriode: any, forr
 
 const validateForm = (values: any) => {
   const errors = {
-    perioder: null,
+    perioder: {},
   };
   if (!values.perioder) {
     return errors;
@@ -117,6 +117,17 @@ const validateForm = (values: any) => {
     if (sjekkOverlappendePerioder(index, nestePeriode, forrigePeriode)) {
       errors.perioder = {
         _error: <FormattedMessage id="TilkjentYtelse.OverlappendePerioder" />,
+      };
+    }
+
+    const totalRefusjon = periode.andeler
+      .map(andel => parseFloat(andel.refusjon))
+      .filter(v => !Number.isNaN(v))
+      .reduce((totalForPeriode: number, refusjon: any) => totalForPeriode + refusjon, 0);
+
+    if (totalRefusjon >= 3999) {
+      errors.perioder = {
+        _error: <FormattedMessage id="TilkjentYtelse.OverskriderMaksbeløp" />,
       };
     }
   });
