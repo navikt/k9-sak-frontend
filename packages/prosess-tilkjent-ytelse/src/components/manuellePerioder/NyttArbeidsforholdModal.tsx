@@ -10,7 +10,6 @@ import { hasValidOrgNumber, required } from '@fpsak-frontend/utils';
 import styles from './periode.less';
 
 const defaultArbeidsforhold = {
-  navn: '',
   arbeidsgiverIdentifikator: '',
 };
 
@@ -39,13 +38,6 @@ export const NyttArbeidsforholdModal: FC<OwnProps & WrappedComponentProps & Inje
       <FlexContainer wrap>
         <FlexRow>
           <FlexColumn className={styles.fullWidth}>
-            <InputField
-              label={{ id: 'TilkjentYtelse.ArbeidsgiverNavn' }}
-              name="navn"
-              validate={[required]}
-              format={value => value}
-            />
-
             <InputField
               label={{ id: 'TilkjentYtelse.ArbeidsgiverOrgnummer' }}
               name="arbeidsgiverIdentifikator"

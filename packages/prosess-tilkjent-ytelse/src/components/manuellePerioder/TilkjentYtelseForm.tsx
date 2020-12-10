@@ -20,6 +20,8 @@ import { guid } from '@fpsak-frontend/utils';
 import { FormattedMessage } from 'react-intl';
 import PeriodeTabell from './PeriodeTabell';
 
+// TODO lage type for periode og formvalues
+
 interface OwnProps {
   readOnly: boolean;
   readOnlySubmitButton: boolean;
@@ -96,32 +98,27 @@ export const sjekkOverlappendePerioder = (index: number, nestePeriode: any, forr
   index !== 0 && moment(nestePeriode.fom) <= moment(forrigePeriode.tom);
 
 const validateForm = (values: any) => {
-  // NOSONAR må ha disse sjekkene
-  const errors = {};
+  const errors = {
+    perioder: null,
+  };
   if (!values.perioder) {
     return errors;
   }
 
   if (values.perioder.length === 0) {
-    return {
-      perioder: {
-        _error: <FormattedMessage id="TilkjentYtelse.IngenPerioder" />,
-      },
+    errors.perioder = {
+      _error: <FormattedMessage id="TilkjentYtelse.IngenPerioder" />,
     };
   }
 
   values.perioder.forEach((periode: any, index: number) => {
     const forrigePeriode = values.perioder[index - 1];
     const nestePeriode = periode;
-
     if (sjekkOverlappendePerioder(index, nestePeriode, forrigePeriode)) {
-      return {
-        perioder: {
-          _error: <FormattedMessage id="TilkjentYtelse.OverlappendePerioder" />,
-        },
+      errors.perioder = {
+        _error: <FormattedMessage id="TilkjentYtelse.OverlappendePerioder" />,
       };
     }
-    return {};
   });
 
   return errors;

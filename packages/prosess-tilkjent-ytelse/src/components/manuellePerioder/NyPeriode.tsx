@@ -144,10 +144,8 @@ const transformValues = (values: any) => ({
       identifikator: arbeidsForhold ? arbeidsForhold[0] : undefined,
       identifikatorGUI: arbeidsForhold ? arbeidsForhold[0] : undefined,
       navn: arbeidsForhold ? arbeidsForhold[1] : undefined,
-      eksternArbeidsforholdId:
-        arbeidsForhold && arbeidsForhold[2] !== 'null' && arbeidsForhold[2] !== 'undefined' ? arbeidsForhold[2] : '-',
-      arbeidsforholdId:
-        arbeidsForhold && arbeidsForhold[3] !== 'null' && arbeidsForhold[3] !== 'undefined' ? arbeidsForhold[3] : '-',
+      eksternArbeidsforholdId: arbeidsForhold && arbeidsForhold[2] !== 'null' ? arbeidsForhold[2] : '-',
+      arbeidsforholdId: arbeidsForhold && arbeidsForhold[3] !== 'null' ? arbeidsForhold[3] : '-',
     };
     return {
       utbetalingsgrad: andel.utbetalingsgrad,
