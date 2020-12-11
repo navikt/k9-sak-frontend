@@ -15,7 +15,7 @@ import kodeverkTyper from '@fpsak-frontend/kodeverk/src/kodeverkTyper';
 import { VerticalSpacer } from '@fpsak-frontend/shared-components';
 import { TimeLineControl } from '@fpsak-frontend/tidslinje';
 import TilkjentYtelseTimelineData from './TilkjentYtelseTimelineData';
-import { createVisningsnavnForAndel } from './TilkjentYteleseUtils';
+import { createVisningsnavnForAndel } from './TilkjentYtelseUtils';
 
 import styles from './tilkjentYtelse.less';
 

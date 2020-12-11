@@ -77,7 +77,6 @@ export {
   hasValidInteger,
   hasValidDecimalMaxNumberOfDecimals,
   maxValue,
-  maxSum,
   minValue,
   maxLength,
   minLength,

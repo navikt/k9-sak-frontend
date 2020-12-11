@@ -9,7 +9,7 @@ import { calcDaysAndWeeksWithWeekends, DDMMYYYY_DATE_FORMAT, getKodeverknavnFn }
 import { TimeLineButton, TimeLineDataContainer } from '@fpsak-frontend/tidslinje';
 import { TabsPure } from 'nav-frontend-tabs';
 import { KodeverkMedNavn } from '@k9-sak-web/types';
-import { createVisningsnavnForAndel, getAktivitet } from './TilkjentYteleseUtils';
+import { createVisningsnavnForAndel, getAktivitet } from './TilkjentYtelseUtils';
 import { PeriodeMedId } from './TilkjentYtelse';
 
 import styles from './tilkjentYtelse.less';

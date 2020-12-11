@@ -10,6 +10,7 @@ import { DatepickerField, behandlingForm, behandlingFormValueSelector } from '@f
 import { FlexColumn, FlexContainer, FlexRow, VerticalSpacer } from '@fpsak-frontend/shared-components';
 import { KodeverkMedNavn, Arbeidsforhold, Vilkar } from '@k9-sak-web/types';
 import NyAndel from './NyAndel';
+import { MAKS_REFUSJON_FOR_PERIODE } from '../TilkjentYtelseUtils';
 
 import styles from './periode.less';
 
@@ -187,8 +188,16 @@ const transformValues = (values: any) => ({
   // lagtTilAvSaksbehandler: true,
 });
 
+const beregnTotalRefusjonFraAndeler = values => {
+  return (values.andeler || [])
+    .map(andel => (andel.refusjon ? parseFloat(andel.refusjon) : 0))
+    .filter(v => !Number.isNaN(v))
+    .reduce((sum, v) => sum + v, 0);
+};
+
 const validateNyPeriodeForm = (values: any) => {
   const errors = {};
+
   if (!values) {
     return errors;
   }
@@ -200,6 +209,20 @@ const validateNyPeriodeForm = (values: any) => {
       fom: invalid,
     };
   }
+
+  const refusjonsSum = beregnTotalRefusjonFraAndeler(values);
+
+  (values.andeler || []).forEach((andel, index) => {
+    if (!errors.andeler) {
+      errors.andeler = [];
+    }
+
+    if (refusjonsSum >= MAKS_REFUSJON_FOR_PERIODE && andel && andel.refusjon) {
+      errors.andeler[index] = {
+        refusjon: [{ id: 'ValidationMessage.MaxSum' }, { length: MAKS_REFUSJON_FOR_PERIODE }],
+      };
+    }
+  });
 
   return errors;
 };
@@ -219,6 +242,7 @@ const mapStateToPropsFactory = (_initialState: any, ownProps: PureOwnProps) => {
     initialValues: {
       fom: null,
       tom: null,
+      andeler: [],
     },
     nyPeriode: behandlingFormValueSelector('nyPeriodeForm', behandlingId, behandlingVersjon)(state, 'fom', 'tom'),
     onSubmit,

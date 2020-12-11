@@ -7,7 +7,7 @@ import { Kodeverk, KodeverkMedNavn } from '@k9-sak-web/types';
 import { Table, TableColumn } from '@fpsak-frontend/shared-components';
 import kodeverkTyper from '@fpsak-frontend/kodeverk/src/kodeverkTyper';
 import { getKodeverknavnFn } from '@fpsak-frontend/utils';
-import { createVisningsnavnForAndel, getInntektskategori } from '../TilkjentYteleseUtils';
+import { createVisningsnavnForAndel, getInntektskategori } from '../TilkjentYtelseUtils';
 
 interface OwnProps {
   fields: FieldArrayFieldsProps<any>;

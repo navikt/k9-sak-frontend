@@ -1,9 +1,18 @@
 import React, { FunctionComponent } from 'react';
-import { injectIntl, WrappedComponentProps } from 'react-intl';
+import { injectIntl, FormattedMessage, WrappedComponentProps } from 'react-intl';
 import { FieldArray, FieldArrayFieldsProps, FieldArrayMetaProps } from 'redux-form';
 import AlertStripe from 'nav-frontend-alertstriper';
+import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import { Arbeidsforhold, Kodeverk, KodeverkMedNavn } from '@k9-sak-web/types';
-import { FlexRow, FlexColumn, Table, TableRow, TableColumn, Image } from '@fpsak-frontend/shared-components';
+import {
+  FlexRow,
+  FlexColumn,
+  Table,
+  TableRow,
+  TableColumn,
+  Image,
+  VerticalSpacer,
+} from '@fpsak-frontend/shared-components';
 import removePeriod from '@fpsak-frontend/assets/images/remove.svg';
 import removePeriodDisabled from '@fpsak-frontend/assets/images/remove_disabled.svg';
 import { DatepickerField } from '@fpsak-frontend/form';
@@ -48,61 +57,64 @@ const PeriodeRad: FunctionComponent<OwnProps & WrappedComponentProps> = ({
       {meta.error && <AlertStripe type="feil">{meta.error}</AlertStripe>}
       {meta.warning && <AlertStripe type="info">{meta.warning}</AlertStripe>}
 
-      <Table headerTextCodes={headerTextCodes}>
-        {fields.map((fieldId: string, index: number, field: FieldArrayFieldsProps<any>) => {
-          const periode = field.get(index);
-          return (
-            <TableRow key={periode.id} id={periode.id}>
-              <TableColumn>
-                <FlexRow>
-                  <FlexColumn>
-                    <DatepickerField
-                      name={`${fieldId}.fom`}
-                      label=""
-                      // @ts-ignore
-                      value={periode.fom}
-                      readOnly
-                    />
-                  </FlexColumn>
-                  <FlexColumn>
-                    <DatepickerField
-                      name={`${fieldId}.tom`}
-                      label=""
-                      // @ts-ignore
-                      value={periode.tom}
-                      readOnly
-                    />
-                  </FlexColumn>
-                </FlexRow>
-              </TableColumn>
-              <TableColumn>
-                <FieldArray
-                  name={`${fieldId}.andeler`}
-                  // @ts-ignore
-                  component={Andeler}
-                  arbeidsforhold={arbeidsforhold}
-                  readOnly
-                  alleKodeverk={alleKodeverk}
-                />
-              </TableColumn>
-              <TableColumn>
-                {!readOnly && (
-                  <div className={styles.iconContainer}>
-                    <Image
-                      className={styles.removeIcon}
-                      src={isAnyFormOrNyPeriodeOpen ? removePeriodDisabled : removePeriod}
-                      onClick={
-                        isAnyFormOrNyPeriodeOpen ? () => undefined : () => openSlettPeriodeModalCallback(periode.id)
-                      }
-                      alt={intl.formatMessage({ id: 'TilkjentYtelse.SlettPerioden' })}
-                    />
-                  </div>
-                )}
-              </TableColumn>
-            </TableRow>
-          );
-        })}
-      </Table>
+      <VerticalSpacer twentyPx />
+      <Ekspanderbartpanel tittel={<FormattedMessage id="TilkjentYtelse.Perioder" />}>
+        <Table headerTextCodes={headerTextCodes}>
+          {fields.map((fieldId: string, index: number, field: FieldArrayFieldsProps<any>) => {
+            const periode = field.get(index);
+            return (
+              <TableRow key={periode.id} id={periode.id}>
+                <TableColumn>
+                  <FlexRow>
+                    <FlexColumn>
+                      <DatepickerField
+                        name={`${fieldId}.fom`}
+                        label=""
+                        // @ts-ignore
+                        value={periode.fom}
+                        readOnly
+                      />
+                    </FlexColumn>
+                    <FlexColumn>
+                      <DatepickerField
+                        name={`${fieldId}.tom`}
+                        label=""
+                        // @ts-ignore
+                        value={periode.tom}
+                        readOnly
+                      />
+                    </FlexColumn>
+                  </FlexRow>
+                </TableColumn>
+                <TableColumn>
+                  <FieldArray
+                    name={`${fieldId}.andeler`}
+                    // @ts-ignore
+                    component={Andeler}
+                    arbeidsforhold={arbeidsforhold}
+                    readOnly
+                    alleKodeverk={alleKodeverk}
+                  />
+                </TableColumn>
+                <TableColumn>
+                  {!readOnly && (
+                    <div className={styles.iconContainer}>
+                      <Image
+                        className={styles.removeIcon}
+                        src={isAnyFormOrNyPeriodeOpen ? removePeriodDisabled : removePeriod}
+                        onClick={
+                          isAnyFormOrNyPeriodeOpen ? () => undefined : () => openSlettPeriodeModalCallback(periode.id)
+                        }
+                        alt={intl.formatMessage({ id: 'TilkjentYtelse.SlettPerioden' })}
+                      />
+                    </div>
+                  )}
+                </TableColumn>
+              </TableRow>
+            );
+          })}
+        </Table>
+      </Ekspanderbartpanel>
     </div>
   );
 };

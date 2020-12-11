@@ -19,4 +19,6 @@ export const createVisningsnavnForAndel = (andel, getKodeverknavn) => {
     : `${andel.arbeidsgiverNavn} (${andel.arbeidsgiverOrgnr})`;
 };
 
+export const MAKS_REFUSJON_FOR_PERIODE = 3999;
+
 export default createVisningsnavnForAndel;

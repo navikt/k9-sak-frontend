@@ -5,17 +5,16 @@ import { FlexColumn, FlexRow, PeriodFieldArray, Image } from '@fpsak-frontend/sh
 import { KodeverkMedNavn, Arbeidsforhold } from '@k9-sak-web/types';
 import kodeverkTyper from '@fpsak-frontend/kodeverk/src/kodeverkTyper';
 import { InputField, SelectField } from '@fpsak-frontend/form';
-import { hasValidDecimal, maxValue, minValue, maxSum, required, getKodeverknavnFn } from '@fpsak-frontend/utils';
+import { hasValidDecimal, maxValue, minValue, required, getKodeverknavnFn } from '@fpsak-frontend/utils';
 import addCircleIcon from '@fpsak-frontend/assets/images/add-circle.svg';
 import NyttArbeidsforholdModal from './NyttArbeidsforholdModal';
-import { createVisningsnavnForAndel } from '../TilkjentYteleseUtils';
+import { createVisningsnavnForAndel, MAKS_REFUSJON_FOR_PERIODE } from '../TilkjentYtelseUtils';
 
 import styles from './periode.less';
 
 const minValue0 = minValue(0);
 const maxValue100 = maxValue(100);
-const maxValue3999 = maxValue(3999);
-const maxSum3999 = maxSum(3999);
+const maxValue3999 = maxValue(MAKS_REFUSJON_FOR_PERIODE);
 
 const mapArbeidsforhold = (arbeidsForhold: any, getKodeverknavn) =>
   arbeidsForhold.map((andel: any, index) => {
@@ -47,8 +46,10 @@ const getInntektskategori = alleKodeverk => {
 };
 
 const defaultAndel = {
-  fom: '',
-  tom: '',
+  refusjon: '',
+  arbeidsgiver: '',
+  inntektskategori: '',
+  utbetalingsgrad: '',
 };
 
 interface OwnProps {
@@ -91,20 +92,7 @@ export const NyAndel: FC<OwnProps & WrappedComponentProps> = ({
               <InputField
                 label="Refusjon"
                 name={`${periodeElementFieldId}.refusjon`}
-                validate={[
-                  required,
-                  minValue0,
-                  maxValue3999,
-                  (value, allValues) => {
-                    const refusjonSum = (Array.isArray(allValues.andeler)
-                      ? allValues.andeler.map(andel => (andel.refusjon ? parseFloat(andel.refusjon) : 0))
-                      : []
-                    ).filter(v => !Number.isNaN(v));
-
-                    return maxSum3999(refusjonSum);
-                  },
-                  hasValidDecimal,
-                ]}
+                validate={[required, minValue0, maxValue3999, hasValidDecimal]}
                 format={value => value}
               />
             </FlexColumn>

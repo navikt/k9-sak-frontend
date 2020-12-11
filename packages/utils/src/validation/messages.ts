@@ -4,7 +4,6 @@ export const maxLengthMessage = length => [{ id: 'ValidationMessage.MaxLength' }
 export const maxLengthOrFodselsnrMessage = length => [{ id: 'ValidationMessage.maxLengthOrFodselsnr' }, { length }];
 export const minValueMessage = length => [{ id: 'ValidationMessage.MinValue' }, { length }];
 export const maxValueMessage = length => [{ id: 'ValidationMessage.MaxValue' }, { length }];
-export const maxSumMessage = length => [{ id: 'ValidationMessage.MaxSum' }, { length }];
 export const invalidDateMessage = () => [{ id: 'ValidationMessage.InvalidDate' }];
 export const invalidIntegerMessage = text => [{ id: 'ValidationMessage.InvalidInteger' }, { text }];
 export const invalidDecimalMessage = (text, maxNumberOfDecimals) => [

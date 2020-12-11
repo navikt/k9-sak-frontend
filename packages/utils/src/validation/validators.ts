@@ -27,7 +27,6 @@ import {
   maxLengthMessage,
   maxLengthOrFodselsnrMessage,
   maxValueMessage,
-  maxSumMessage,
   merEn100ProsentMessage,
   minLengthMessage,
   minValueMessage,
@@ -68,8 +67,6 @@ export const maxLength = length => text =>
 
 export const minValue = length => number => (number >= length ? null : minValueMessage(length));
 export const maxValue = length => number => (number <= length ? null : maxValueMessage(length));
-export const maxSum = (length: number) => (arr: Array<number>) =>
-  arr.reduce((sum: number, n: number) => sum + n, 0) <= length ? null : maxSumMessage(length);
 
 export const hasValidOrgNumber = number => (number.toString().trim().length === 9 ? null : invalidOrgNumberMessage());
 export const hasValidOrgNumberOrFodselsnr = number =>
