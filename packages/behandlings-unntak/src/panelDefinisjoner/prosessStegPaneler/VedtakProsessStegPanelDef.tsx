@@ -26,7 +26,7 @@ class PanelDef extends ProsessStegPanelDef {
     unntakBehandlingApi.SEND_VARSEL_OM_REVURDERING,
     unntakBehandlingApi.VEDTAK_VARSEL,
     unntakBehandlingApi.TILGJENGELIGE_VEDTAKSBREV,
-    // unntakBehandlingApi.DOKUMENTDATA_HENTE,
+    unntakBehandlingApi.DOKUMENTDATA_HENTE,
   ];
 
   getOverstyrVisningAvKomponent = () => true;
