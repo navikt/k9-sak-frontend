@@ -83,6 +83,7 @@ export const OpptjeningVilkarAksjonspunktPanelImpl: FunctionComponent<
     <Element>
       <FormattedMessage id="OpptjeningVilkarAksjonspunktPanel.SokerHarVurdertOpptjentRettTilPleiepenger" />
     </Element>
+
     <VilkarResultPicker
       erVilkarOk={erVilkarOk}
       readOnly={readOnly}

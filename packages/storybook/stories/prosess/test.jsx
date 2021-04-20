@@ -1,0 +1,117 @@
+// eslint-disable-next-line max-len
+const beregningsgrunnlag = [
+  {
+    skjaeringstidspunktBeregning: '2020-08-01',
+    skjæringstidspunkt: '2020-08-01',
+    aktivitetStatus: [{ kode: 'AT', kodeverk: 'AKTIVITET_STATUS' }],
+    beregningsgrunnlagPeriode: [
+      {
+        beregningsgrunnlagPeriodeFom: '2020-08-01',
+        beregningsgrunnlagPeriodeTom: '9999-12-31',
+        beregnetPrAar: 6000.0,
+        bruttoPrAar: 6000.0,
+        bruttoInkludertBortfaltNaturalytelsePrAar: 6000.0,
+        periodeAarsaker: [],
+        beregningsgrunnlagPrStatusOgAndel: [
+          {
+            dtoType: 'GENERELL',
+            beregningsgrunnlagFom: '2020-05-01',
+            beregningsgrunnlagTom: '2020-07-31',
+            aktivitetStatus: { kode: 'AT', kodeverk: 'AKTIVITET_STATUS' },
+            beregningsperiodeFom: '2020-05-01',
+            beregningsperiodeTom: '2020-07-31',
+            beregnetPrAar: 6000.0,
+            bruttoPrAar: 6000.0,
+            andelsnr: 1,
+            inntektskategori: { kode: 'ARBEIDSTAKER', kodeverk: 'INNTEKTSKATEGORI' },
+            arbeidsforhold: {
+              arbeidsgiverNavn: 'PENGELØS SPAREBANK',
+              arbeidsgiverId: '972674818',
+              arbeidsgiverIdent: '972674818',
+              arbeidsgiverIdVisning: '972674818',
+              startdato: '2000-09-30',
+              arbeidsforholdType: { kode: 'ARBEID', kodeverk: 'OPPTJENING_AKTIVITET_TYPE' },
+              belopFraInntektsmeldingPrMnd: 500.0,
+            },
+            fastsattAvSaksbehandler: false,
+            lagtTilAvSaksbehandler: false,
+            belopPrMndEtterAOrdningen: 45000.0,
+            belopPrAarEtterAOrdningen: 540000.0,
+            erTilkommetAndel: false,
+            skalFastsetteGrunnlag: false,
+          },
+        ],
+      },
+    ],
+    sammenligningsgrunnlag: {
+      sammenligningsgrunnlagFom: '2019-08-01',
+      sammenligningsgrunnlagTom: '2020-07-31',
+      rapportertPrAar: 495000.0,
+      avvikPromille: 987.8787879,
+      avvikProsent: 98.78787879,
+      sammenligningsgrunnlagType: { kode: 'SAMMENLIGNING_ATFL_SN', kodeverk: 'SAMMENLIGNINGSGRUNNLAG_TYPE' },
+      differanseBeregnet: -489000.0,
+    },
+    sammenligningsgrunnlagPrStatus: [
+      {
+        sammenligningsgrunnlagFom: '2019-08-01',
+        sammenligningsgrunnlagTom: '2020-07-31',
+        rapportertPrAar: 495000.0,
+        avvikPromille: 987.8787879,
+        avvikProsent: 98.78787879,
+        sammenligningsgrunnlagType: { kode: 'SAMMENLIGNING_ATFL_SN', kodeverk: 'SAMMENLIGNINGSGRUNNLAG_TYPE' },
+        differanseBeregnet: -489000.0,
+      },
+    ],
+    halvG: 50675.5,
+    grunnbeløp: 101351.0,
+    faktaOmBeregning: {
+      avklarAktiviteter: {
+        aktiviteterTomDatoMapping: [
+          {
+            tom: '2020-08-01',
+            aktiviteter: [
+              {
+                arbeidsgiverNavn: 'PENGELØS SPAREBANK',
+                arbeidsgiverId: '972674818',
+                fom: '2000-09-30',
+                tom: '9999-12-31',
+                arbeidsforholdType: { kode: 'ARBEID', kodeverk: 'OPPTJENING_AKTIVITET_TYPE' },
+              },
+            ],
+          },
+        ],
+        skjæringstidspunkt: '2020-08-01',
+      },
+      andelerForFaktaOmBeregning: [
+        {
+          belopReadOnly: 500.0,
+          fastsattBelop: 500.0,
+          inntektskategori: { kode: 'ARBEIDSTAKER', kodeverk: 'INNTEKTSKATEGORI' },
+          aktivitetStatus: { kode: 'AT', kodeverk: 'AKTIVITET_STATUS' },
+          refusjonskrav: 500.0,
+          visningsnavn: 'PENGELØS SPAREBANK (972674818)',
+          arbeidsforhold: {
+            arbeidsgiverNavn: 'PENGELØS SPAREBANK',
+            arbeidsgiverId: '972674818',
+            arbeidsgiverIdent: '972674818',
+            arbeidsgiverIdVisning: '972674818',
+            startdato: '2000-09-30',
+            arbeidsforholdType: { kode: 'ARBEID', kodeverk: 'OPPTJENING_AKTIVITET_TYPE' },
+            belopFraInntektsmeldingPrMnd: 500.0,
+          },
+          andelsnr: 1,
+          skalKunneEndreAktivitet: false,
+          lagtTilAvSaksbehandler: false,
+        },
+      ],
+    },
+    hjemmel: { kode: 'F_9_8_8_28', kodeverk: 'BG_HJEMMEL' },
+    årsinntektVisningstall: 6000.0,
+    dekningsgrad: 100,
+    ytelsesspesifiktGrunnlag: { ytelsetype: 'OMP', skalAvviksvurdere: false },
+    erOverstyrtInntekt: false,
+    vilkårsperiodeFom: '2020-08-01',
+  },
+];
+export default beregningsgrunnlag;

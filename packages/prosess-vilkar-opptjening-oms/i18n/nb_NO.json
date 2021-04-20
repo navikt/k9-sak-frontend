@@ -75,5 +75,8 @@
   "ValidationMessage.UtsettelseUtenFullArbeid": "Søker har ikke 100% stilling, vurder om perioden kan utsettes.",
   "ValidationMessage.MerEn100Prosent": "Samlet utbetalingsgrad og andel i arbeid bør ikke overskride 100%.",
   "ValidationMessage.MerEn100ProsentOgOgyldigUtsettlse": "Samlet utbetalingsgrad og andel i arbeid bør ikke overskride 100%. Søker har ikke 100% stilling, vurder om perioden kan utsettes.",
-  "ValidationMessage.InvalidOrganisasjonsnummer": "Ugyldig organisasjonsnummer."
+  "ValidationMessage.InvalidOrganisasjonsnummer": "Ugyldig organisasjonsnummer.",
+
+  "Aksjonspunkt.MidlertidigInaktiv":  "Skal beregnes jf §§ 8-47."
+
 }

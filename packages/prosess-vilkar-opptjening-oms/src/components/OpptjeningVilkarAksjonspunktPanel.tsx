@@ -1,8 +1,8 @@
-import { behandlingForm, behandlingFormValueSelector } from '@fpsak-frontend/form';
+import { behandlingForm, behandlingFormValueSelector, CheckboxField } from '@fpsak-frontend/form';
 import { VilkarResultPicker, ProsessStegBegrunnelseTextField, ProsessPanelTemplate } from '@k9-sak-web/prosess-felles';
 import { isAksjonspunktOpen } from '@fpsak-frontend/kodeverk/src/aksjonspunktStatus';
 import vilkarUtfallType from '@fpsak-frontend/kodeverk/src/vilkarUtfallType';
-import { VerticalSpacer } from '@fpsak-frontend/shared-components';
+import { FlexColumn, FlexContainer, FlexRow, VerticalSpacer } from '@fpsak-frontend/shared-components';
 import { Aksjonspunkt, FastsattOpptjening, Opptjening, SubmitCallback, Vilkårresultat } from '@k9-sak-web/types';
 import { Element } from 'nav-frontend-typografi';
 import React, { FunctionComponent, useMemo } from 'react';
@@ -14,7 +14,7 @@ import OpptjeningVilkarView from './OpptjeningVilkarView';
 import VilkarFields from './VilkarFields';
 
 const FORM_NAME = 'OpptjeningVilkarForm';
-
+const fieldName847 = 'gjelder847';
 interface VilkårField {
   erVilkarOk: boolean;
   begrunnelse: string;
@@ -112,6 +112,18 @@ export const OpptjeningVilkarAksjonspunktPanelImpl: FunctionComponent<
       <Element>
         <FormattedMessage id="OpptjeningVilkarAksjonspunktPanel.SokerHarVurdertOpptjentRettTilPleiepenger" />
       </Element>
+      <FlexContainer>
+        <FlexRow>
+          <FlexColumn>
+            <CheckboxField
+              readOnly={false}
+              name={fieldName847}
+              label={<FormattedMessage id="Aksjonspunkt.MidlertidigInaktiv" />}
+            />
+          </FlexColumn>
+        </FlexRow>
+        <VerticalSpacer eightPx />
+      </FlexContainer>
       <VilkarFields erVilkarOk={erVilkarOk} readOnly={readOnly} fieldPrefix={`vilkarFields[${vilkårIndex}]`} />
     </ProsessPanelTemplate>
   );
@@ -140,6 +152,7 @@ const transformValues = (values: Values, aksjonspunkter: Aksjonspunkt[], opptjen
       Array.isArray(opptjeninger) && opptjeninger[index] && opptjeninger[index].fastsattOpptjening.opptjeningFom,
     opptjeningTom:
       Array.isArray(opptjeninger) && opptjeninger[index] && opptjeninger[index].fastsattOpptjening.opptjeningTom,
+    midlertidigInaktiv: values[fieldName847] ? 'TYPE_A' : 'TYPE_B',
   })),
   ...{ kode: Array.isArray(aksjonspunkter) && aksjonspunkter.length ? aksjonspunkter[0].definisjon.kode : null },
 });
