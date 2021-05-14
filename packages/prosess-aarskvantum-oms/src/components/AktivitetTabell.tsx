@@ -20,6 +20,7 @@ import React, { FunctionComponent, ReactNode, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import { FraværÅrsakEnum } from '@k9-sak-web/types/src/omsorgspenger/Uttaksperiode';
+import stjerneImg from '@fpsak-frontend/assets/images/stjerne.svg';
 import styles from './aktivitetTabell.less';
 import NøkkeltallContainer, { Nokkeltalltype } from './nokkeltall/NokkeltallContainer';
 import Utfall from './Utfall';
@@ -31,6 +32,7 @@ interface AktivitetTabellProps {
   arbeidsforholdtypeKode: string;
   uttaksperioder: Uttaksperiode[];
   aktivitetsstatuser: KodeverkMedNavn[];
+  gjeldandeBehandling: boolean;
 }
 
 const periodevisning = (periode: string): string => {
@@ -96,6 +98,7 @@ const AktivitetTabell: FunctionComponent<AktivitetTabellProps> = ({
   arbeidsforholdtypeKode,
   uttaksperioder,
   aktivitetsstatuser,
+  gjeldandeBehandling,
 }) => {
   const [valgtPeriodeIndex, velgPeriodeIndex] = useState<number>();
   const [valgteDetaljfaner, velgDetaljfaner] = useState<number[]>();
@@ -160,7 +163,17 @@ const AktivitetTabell: FunctionComponent<AktivitetTabellProps> = ({
 
   return (
     <Panel border className={styles.aktivitetTabell}>
-      <Element>{beskrivelse}</Element>
+      <div className={styles.header}>
+        <Element>{beskrivelse}</Element>
+        {gjeldandeBehandling && (
+          <Image
+            className={styles.starImage}
+            src={stjerneImg}
+            tooltip={<FormattedMessage id="Uttaksplan.GjeldendeBehandling" />}
+            alignTooltipLeft
+          />
+        )}
+      </div>
       <Table
         suppliedHeaders={
           <>

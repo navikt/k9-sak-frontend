@@ -53,6 +53,7 @@ describe('<AktivitetTabell />', () => {
         arbeidsforhold={arbeidsforhold}
         aktivitetsstatuser={[]}
         arbeidsgiverOpplysningerPerId={{}}
+        gjeldandeBehandling={false}
       />,
     );
     const kolonner = wrapper.find('td');
@@ -79,6 +80,7 @@ describe('<AktivitetTabell />', () => {
         arbeidsforholdtypeKode="AT"
         aktivitetsstatuser={[]}
         arbeidsgiverOpplysningerPerId={{}}
+        gjeldandeBehandling={false}
       />,
     );
 

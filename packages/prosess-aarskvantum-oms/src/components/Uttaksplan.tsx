@@ -34,6 +34,8 @@ const mapAktiviteterTilTabell = (
     const gjeldendeArbeidsforhold = alleArbeidsforhold
       .filter(arb => arb.arbeidsgiver?.arbeidsgiverOrgnr === arbeidsforhold.organisasjonsnummer)
       .find(arb => arb.arbeidsforhold?.internArbeidsforholdId === arbeidsforhold.arbeidsforholdId);
+    // Inn med logikk her
+    const gjeldendeBehandling = true;
 
     return (
       <AktivitetTabell
@@ -43,6 +45,7 @@ const mapAktiviteterTilTabell = (
         uttaksperioder={uttaksperioder}
         aktivitetsstatuser={aktivitetsstatuser}
         key={joinNonNullStrings(Object.values(arbeidsforhold))}
+        gjeldandeBehandling={gjeldendeBehandling}
       />
     );
   });
