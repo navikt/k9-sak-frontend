@@ -14,11 +14,7 @@ module.exports = function (api) {
     ],
     '@babel/preset-typescript',
   ];
-  const plugins = [
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-nullish-coalescing-operator',
-    '@babel/plugin-proposal-optional-chaining',
-  ];
+  const plugins = [];
 
   if (NODE_ENV && BABEL_ENV && NODE_ENV !== BABEL_ENV) {
     console.warn('WARNING: Both BABEL_ENV and NODE_ENV are set in');
