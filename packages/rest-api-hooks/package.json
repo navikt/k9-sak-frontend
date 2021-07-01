@@ -6,6 +6,6 @@
   "private": true,
   "dependencies": {
     "@k9-sak-web/rest-api": "1.0.0",
-    "react": "^16.14.0"
+    "react": "^17.0.2"
   }
 }
