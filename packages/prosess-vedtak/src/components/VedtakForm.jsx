@@ -31,6 +31,7 @@ import VedtakAksjonspunktPanel from './VedtakAksjonspunktPanel';
 import styles from './vedtakForm.less';
 import VedtakOverstyrendeKnapp from './VedtakOverstyrendeKnapp';
 import BrevPanel from './brev/BrevPanel';
+import UstrukturerteDokumenter from './UstrukturerteDokumenter';
 
 const isVedtakSubmission = true;
 
@@ -124,6 +125,8 @@ export class VedtakForm extends Component {
               />
             )
           )}
+
+          <UstrukturerteDokumenter />
 
           {(isInnvilget(behandlingresultat.type.kode) || isDelvisInnvilget(behandlingresultat.type.kode)) && (
             <VedtakInnvilgetPanel
