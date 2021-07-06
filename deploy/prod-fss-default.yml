@@ -74,7 +74,7 @@ spec:
     - name: VARSELTEKST
       value: "true"
     - name: DOKUMENTDATA
-      value: "false"
+      value: "true"
     - name: UNNTAKSBEHANDLING
       value: "false"
     - name: KLAGEBEHANDLING
